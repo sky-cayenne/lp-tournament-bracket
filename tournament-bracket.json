@@ -26,10 +26,10 @@
         "team2": {
           "name": "Бельгія",
           "logoUrl": "https://flagcdn.com/be.svg",
-          "isActive": true
+          "isActive": false
         },
         "matchDate": "2026-07-12T22:00:00+03:00",
-        "score": "",
+        "score": "2:1",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a4c9cf9a60393.28538486"
       },
       {
