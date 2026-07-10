@@ -74,9 +74,9 @@
           "isActive": true
         },
         "team2": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
+          "name": "Іспанія",
+          "logoUrl": "https://flagcdn.com/es.svg",
+          "isActive": true
         },
         "matchDate": "2026-07-14T22:00:00+03:00",
         "score": "",
