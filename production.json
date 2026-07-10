@@ -13,7 +13,7 @@
           "logoUrl": "https://flagcdn.com/ma.svg",
           "isActive": false
         },
-        "matchDate": "2026-07-11T22:00:00+03:00",
+        "matchDate": "2026-07-09T23:00:00+03:00",
         "score": "2:0",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a49f65de4a0d2.02359800"
       },
@@ -28,7 +28,7 @@
           "logoUrl": "https://flagcdn.com/be.svg",
           "isActive": false
         },
-        "matchDate": "2026-07-12T22:00:00+03:00",
+        "matchDate": "2026-07-10T22:00:00+03:00",
         "score": "2:1",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a4c9cf9a60393.28538486"
       },
@@ -43,7 +43,7 @@
           "logoUrl": "https://flagcdn.com/gb-eng.svg",
           "isActive": true
         },
-        "matchDate": "2026-07-13T00:00:00+03:00",
+        "matchDate": "2026-07-12T00:00:00+03:00",
         "score": "",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a4b4e305a2763.41368061"
       },
@@ -58,7 +58,7 @@
           "logoUrl": "https://flagcdn.com/ch.svg",
           "isActive": true
         },
-        "matchDate": "2026-07-13T04:00:00+03:00",
+        "matchDate": "2026-07-12T04:00:00+03:00",
         "score": "",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a4de1e37351a2.72424131"
       }
@@ -113,7 +113,7 @@
           "logoUrl": "https://example.com/logos/tbd.svg",
           "isActive": false
         },
-        "matchDate": "2026-07-18T22:00:00+03:00",
+        "matchDate": "2026-07-19T00:00:00+03:00",
         "score": "",
         "feed_url": ""
       }
