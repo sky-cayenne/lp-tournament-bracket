@@ -36,7 +36,7 @@
         "team1": {
           "name": "Норвегія",
           "logoUrl": "https://flagcdn.com/no.svg",
-          "isActive": true
+          "isActive": false
         },
         "team2": {
           "name": "Англія",
@@ -44,7 +44,7 @@
           "isActive": true
         },
         "matchDate": "2026-07-12T00:00:00+03:00",
-        "score": "",
+        "score": "1:2",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a4b4e305a2763.41368061"
       },
       {
@@ -56,10 +56,10 @@
         "team2": {
           "name": "Швейцарія",
           "logoUrl": "https://flagcdn.com/ch.svg",
-          "isActive": true
+          "isActive": false
         },
         "matchDate": "2026-07-12T04:00:00+03:00",
-        "score": "",
+        "score": "3:1",
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a4de1e37351a2.72424131"
       }
     ]
@@ -84,14 +84,14 @@
       },
       {
         "team1": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
+          "name": "Англія",
+          "logoUrl": "https://flagcdn.com/gb-eng.svg",
+          "isActive": true
         },
         "team2": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
+          "name": "Аргентина",
+          "logoUrl": "https://flagcdn.com/ar.svg",
+          "isActive": true
         },
         "matchDate": "2026-07-15T22:00:00+03:00",
         "score": "",
