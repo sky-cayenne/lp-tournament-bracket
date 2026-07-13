@@ -1,70 +1,5 @@
 [
   {
-    "stage": "Quarter-finals",
-    "matches": [
-      {
-        "team1": {
-          "name": "Франція",
-          "logoUrl": "https://flagcdn.com/fr.svg",
-          "isActive": true
-        },
-        "team2": {
-          "name": "Марокко",
-          "logoUrl": "https://flagcdn.com/ma.svg",
-          "isActive": false
-        },
-        "matchDate": "2026-07-09T23:00:00+03:00",
-        "score": "2:0",
-        "feed_url": "https://feed.pm/api/v1/event/mfi-6a49f65de4a0d2.02359800"
-      },
-      {
-        "team1": {
-          "name": "Іспанія",
-          "logoUrl": "https://flagcdn.com/es.svg",
-          "isActive": true
-        },
-        "team2": {
-          "name": "Бельгія",
-          "logoUrl": "https://flagcdn.com/be.svg",
-          "isActive": false
-        },
-        "matchDate": "2026-07-10T22:00:00+03:00",
-        "score": "2:1",
-        "feed_url": "https://feed.pm/api/v1/event/mfi-6a4c9cf9a60393.28538486"
-      },
-      {
-        "team1": {
-          "name": "Норвегія",
-          "logoUrl": "https://flagcdn.com/no.svg",
-          "isActive": false
-        },
-        "team2": {
-          "name": "Англія",
-          "logoUrl": "https://flagcdn.com/gb-eng.svg",
-          "isActive": true
-        },
-        "matchDate": "2026-07-12T00:00:00+03:00",
-        "score": "1:2",
-        "feed_url": "https://feed.pm/api/v1/event/mfi-6a4b4e305a2763.41368061"
-      },
-      {
-        "team1": {
-          "name": "Аргентина",
-          "logoUrl": "https://flagcdn.com/ar.svg",
-          "isActive": true
-        },
-        "team2": {
-          "name": "Швейцарія",
-          "logoUrl": "https://flagcdn.com/ch.svg",
-          "isActive": false
-        },
-        "matchDate": "2026-07-12T04:00:00+03:00",
-        "score": "3:1",
-        "feed_url": "https://feed.pm/api/v1/event/mfi-6a4de1e37351a2.72424131"
-      }
-    ]
-  },
-  {
     "stage": "Semi-finals",
     "matches": [
       {
@@ -76,10 +11,11 @@
         "team2": {
           "name": "Іспанія",
           "logoUrl": "https://flagcdn.com/es.svg",
-          "isActive": true
+          "isActive": false
         },
         "matchDate": "2026-07-14T22:00:00+03:00",
-        "score": "",
+        "score": "2:0",
+        "isFinished": true,
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a5160f5a9d3f5.77316886"
       },
       {
@@ -95,27 +31,8 @@
         },
         "matchDate": "2026-07-15T22:00:00+03:00",
         "score": "",
+        "isFinished": false,
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a5333dcea8d43.00242242"
-      }
-    ]
-  },
-  {
-    "stage": "3rd-place",
-    "matches": [
-      {
-        "team1": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
-        },
-        "team2": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
-        },
-        "matchDate": "2026-07-19T00:00:00+03:00",
-        "score": "",
-        "feed_url": ""
       }
     ]
   },
@@ -124,9 +41,9 @@
     "matches": [
       {
         "team1": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
+          "name": "Франція",
+          "logoUrl": "https://flagcdn.com/fr.svg",
+          "isActive": true
         },
         "team2": {
           "name": "TBD",
@@ -135,6 +52,7 @@
         },
         "matchDate": "2026-07-19T22:00:00+03:00",
         "score": "",
+        "isFinished": false,
         "feed_url": ""
       }
     ]

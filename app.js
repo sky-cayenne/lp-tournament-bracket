@@ -1,71 +1,11 @@
 const bracketRoot = document.querySelector("#bracket");
+const sourceButtons = [...document.querySelectorAll(".source-toggle__button")];
+const defaultDataSource = "./tournament-bracket.json";
+let activeDataSource =
+  sourceButtons.find((button) => button.classList.contains("is-active"))?.dataset.source ||
+  defaultDataSource;
 
 const fallbackBracket = [
-  {
-    stage: "Quarter-finals",
-    matches: [
-      {
-        team1: {
-          name: "Франція",
-          logoUrl: "https://flagcdn.com/fr.svg",
-          isActive: true,
-        },
-        team2: {
-          name: "Марокко",
-          logoUrl: "https://flagcdn.com/ma.svg",
-          isActive: false,
-        },
-        matchDate: "2026-07-11T22:00:00+03:00",
-        score: "2:0",
-        feed_url: "https://feed.pm/api/v1/event/mfi-6a49f65de4a0d2.02359800",
-      },
-      {
-        team1: {
-          name: "Іспанія",
-          logoUrl: "https://flagcdn.com/es.svg",
-          isActive: true,
-        },
-        team2: {
-          name: "Бельгія",
-          logoUrl: "https://flagcdn.com/be.svg",
-          isActive: true,
-        },
-        matchDate: "2026-07-12T22:00:00+03:00",
-        score: "",
-        feed_url: "https://feed.pm/api/v1/event/mfi-6a4c9cf9a60393.28538486",
-      },
-      {
-        team1: {
-          name: "Норвегія",
-          logoUrl: "https://flagcdn.com/no.svg",
-          isActive: true,
-        },
-        team2: {
-          name: "Англія",
-          logoUrl: "https://flagcdn.com/gb-eng.svg",
-          isActive: true,
-        },
-        matchDate: "2026-07-13T00:00:00+03:00",
-        score: "",
-        feed_url: "https://feed.pm/api/v1/event/mfi-6a4b4e305a2763.41368061",
-      },
-      {
-        team1: {
-          name: "Аргентина",
-          logoUrl: "https://flagcdn.com/ar.svg",
-          isActive: true,
-        },
-        team2: {
-          name: "Швейцарія",
-          logoUrl: "https://flagcdn.com/ch.svg",
-          isActive: true,
-        },
-        matchDate: "2026-07-13T04:00:00+03:00",
-        score: "",
-        feed_url: "https://feed.pm/api/v1/event/mfi-6a4de1e37351a2.72424131",
-      },
-    ],
-  },
   {
     stage: "Semi-finals",
     matches: [
@@ -76,48 +16,30 @@ const fallbackBracket = [
           isActive: true,
         },
         team2: {
-          name: "TBD",
-          logoUrl: "",
-          isActive: false,
+          name: "Іспанія",
+          logoUrl: "https://flagcdn.com/es.svg",
+          isActive: true,
         },
         matchDate: "2026-07-14T22:00:00+03:00",
         score: "",
-        feed_url: "",
+        isFinished: false,
+        feed_url: "https://feed.pm/api/v1/event/mfi-6a5160f5a9d3f5.77316886",
       },
       {
         team1: {
-          name: "TBD",
-          logoUrl: "",
-          isActive: false,
+          name: "Англія",
+          logoUrl: "https://flagcdn.com/gb-eng.svg",
+          isActive: true,
         },
         team2: {
-          name: "TBD",
-          logoUrl: "",
-          isActive: false,
+          name: "Аргентина",
+          logoUrl: "https://flagcdn.com/ar.svg",
+          isActive: true,
         },
         matchDate: "2026-07-15T22:00:00+03:00",
         score: "",
-        feed_url: "",
-      },
-    ],
-  },
-  {
-    stage: "3rd-place",
-    matches: [
-      {
-        team1: {
-          name: "TBD",
-          logoUrl: "",
-          isActive: false,
-        },
-        team2: {
-          name: "TBD",
-          logoUrl: "",
-          isActive: false,
-        },
-        matchDate: "2026-07-18T22:00:00+03:00",
-        score: "",
-        feed_url: "",
+        isFinished: false,
+        feed_url: "https://feed.pm/api/v1/event/mfi-6a5333dcea8d43.00242242",
       },
     ],
   },
@@ -137,6 +59,7 @@ const fallbackBracket = [
         },
         matchDate: "2026-07-19T22:00:00+03:00",
         score: "",
+        isFinished: false,
         feed_url: "",
       },
     ],
@@ -180,7 +103,7 @@ function normalizeName(value) {
   return String(value || "").trim().toLowerCase();
 }
 
-function createTeam(team, metricValue, metricType = "score") {
+function createTeam(team, scoreValue) {
   const row = document.createElement("div");
   row.className = `team${team.isActive ? " is-active" : ""}`;
 
@@ -202,14 +125,25 @@ function createTeam(team, metricValue, metricType = "score") {
   name.textContent = team.name;
   row.append(name);
 
-  if (metricValue !== undefined) {
+  if (scoreValue !== undefined) {
     const metric = document.createElement("span");
-    metric.className = `team-metric team-metric--${metricType}`;
-    metric.textContent = metricValue;
+    metric.className = "team-metric team-metric--score";
+    metric.textContent = scoreValue;
     row.append(metric);
   }
 
   return row;
+}
+
+function getDrawOdd(feedData) {
+  return (
+    feedData?.coff_x ??
+    feedData?.coff_draw ??
+    feedData?.coff_d ??
+    feedData?.coff_p0 ??
+    feedData?.coff_0 ??
+    null
+  );
 }
 
 function extractOdds(feedData, match) {
@@ -220,21 +154,49 @@ function extractOdds(feedData, match) {
     const team2 = normalizeName(match.team2.name);
 
     if (p1 === team1 && p2 === team2) {
-      return [feedData.coff_p1, feedData.coff_p2];
+      return [feedData.coff_p1, getDrawOdd(feedData), feedData.coff_p2];
     }
 
     if (p1 === team2 && p2 === team1) {
-      return [feedData.coff_p2, feedData.coff_p1];
+      return [feedData.coff_p2, getDrawOdd(feedData), feedData.coff_p1];
     }
 
-    return [feedData.coff_p1, feedData.coff_p2];
+    return [feedData.coff_p1, getDrawOdd(feedData), feedData.coff_p2];
   }
 
   return null;
 }
 
+function createOddsBlock(match) {
+  const odds = document.createElement("div");
+  odds.className = `odds-row${match.isFinished ? " odds-row--finished" : ""}`;
+
+  [
+    ["П1", "-"],
+    ["X", "-"],
+    ["П2", "-"],
+  ].forEach(([label, value]) => {
+    const item = document.createElement("div");
+    item.className = "odds-cell";
+    item.dataset.odd = label;
+
+    const labelEl = document.createElement("span");
+    labelEl.className = "odds-label";
+    labelEl.textContent = label;
+
+    const valueEl = document.createElement("span");
+    valueEl.className = "odds-value";
+    valueEl.textContent = value;
+
+    item.append(labelEl, valueEl);
+    odds.append(item);
+  });
+
+  return odds;
+}
+
 async function loadMatchOdds(match, card) {
-  if (!match.feed_url) {
+  if (match.isFinished || !match.feed_url) {
     return;
   }
 
@@ -251,9 +213,9 @@ async function loadMatchOdds(match, card) {
       return;
     }
 
-    const [team1Metric, team2Metric] = card.querySelectorAll(".team-metric--odds");
-    team1Metric.textContent = odds[0];
-    team2Metric.textContent = odds[1];
+    card.querySelectorAll(".odds-value").forEach((value, index) => {
+      value.textContent = odds[index] ?? "-";
+    });
   } catch (error) {
     console.error(error);
   }
@@ -269,17 +231,14 @@ function createMatch(match) {
 
   const score = parseScore(match.score);
 
-  const shouldShowOdds = !score && Boolean(match.feed_url);
-
   card.append(
     date,
-    createTeam(match.team1, score?.[0] ?? (shouldShowOdds ? "" : undefined), score ? "score" : "odds"),
-    createTeam(match.team2, score?.[1] ?? (shouldShowOdds ? "" : undefined), score ? "score" : "odds"),
+    createTeam(match.team1, score?.[0] ?? ""),
+    createTeam(match.team2, score?.[1] ?? ""),
+    createOddsBlock(match),
   );
 
-  if (shouldShowOdds) {
-    loadMatchOdds(match, card);
-  }
+  loadMatchOdds(match, card);
 
   return card;
 }
@@ -306,17 +265,29 @@ function renderData(data) {
   bracketRoot.replaceChildren(...data.map(createStage));
 }
 
+function setActiveSource(source) {
+  activeDataSource = source;
+  sourceButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.source === source);
+  });
+}
+
 function showLoadWarning() {
+  document.querySelector(".data-warning")?.remove();
+
   const warning = document.createElement("div");
   warning.className = "data-warning";
   warning.textContent =
-    "Показую вбудований приклад. Щоб бачити зміни з tournament-bracket.json, відкрий сторінку через http://127.0.0.1:5173/.";
+    "Показую вбудований приклад. Щоб бачити зміни з JSON, відкрий сторінку через локальний HTTP-сервер.";
   bracketRoot.before(warning);
 }
 
-async function renderBracket() {
+async function renderBracket(source = activeDataSource) {
+  setActiveSource(source);
+  document.querySelector(".data-warning")?.remove();
+
   try {
-    const response = await fetch("./tournament-bracket.json", { cache: "no-store" });
+    const response = await fetch(source, { cache: "no-store" });
 
     if (!response.ok) {
       throw new Error(`Cannot load bracket JSON: ${response.status}`);
@@ -330,5 +301,11 @@ async function renderBracket() {
     console.error(error);
   }
 }
+
+sourceButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    renderBracket(button.dataset.source);
+  });
+});
 
 renderBracket();

@@ -13,7 +13,20 @@
           <p class="eyebrow">Tournament LP module</p>
           <h1>Knockout</h1>
         </div>
-        <a class="json-link" href="./tournament-bracket.json">JSON data</a>
+        <div class="data-tools" aria-label="Data source controls">
+          <div class="source-toggle" role="group" aria-label="Preview data source">
+            <button class="source-toggle__button is-active" type="button" data-source="./tournament-bracket.json">
+              Preview
+            </button>
+            <button class="source-toggle__button" type="button" data-source="./production.json">
+              Production
+            </button>
+          </div>
+          <div class="json-links" aria-label="Open JSON files">
+            <a class="json-link" href="./tournament-bracket.json" target="_blank" rel="noreferrer">Preview JSON</a>
+            <a class="json-link" href="./production.json" target="_blank" rel="noreferrer">Production JSON</a>
+          </div>
+        </div>
       </section>
 
       <section class="bracket-wrap" aria-label="Tournament bracket">
