@@ -6,7 +6,7 @@
         "team1": {
           "name": "Франція",
           "logoUrl": "https://flagcdn.com/fr.svg",
-          "isActive": true
+          "isActive": false
         },
         "team2": {
           "name": "Іспанія",
@@ -15,7 +15,7 @@
         },
         "matchDate": "2026-07-14T22:00:00+03:00",
         "score": "0:2",
-        "isFinished": false,
+        "isFinished": true,
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a5160f5a9d3f5.77316886"
       },
       {
@@ -41,9 +41,9 @@
     "matches": [
       {
         "team1": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
+          "name": "Іспанія",
+          "logoUrl": "https://flagcdn.com/es.svg",
+          "isActive": true
         },
         "team2": {
           "name": "TBD",
