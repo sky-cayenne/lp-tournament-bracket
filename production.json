@@ -22,7 +22,7 @@
         "team1": {
           "name": "Англія",
           "logoUrl": "https://flagcdn.com/gb-eng.svg",
-          "isActive": true
+          "isActive": false
         },
         "team2": {
           "name": "Аргентина",
@@ -31,7 +31,7 @@
         },
         "matchDate": "2026-07-15T22:00:00+03:00",
         "score": "1:2",
-        "isFinished": false,
+        "isFinished": true,
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a5333dcea8d43.00242242"
       }
     ]
@@ -46,9 +46,9 @@
           "isActive": true
         },
         "team2": {
-          "name": "TBD",
-          "logoUrl": "https://example.com/logos/tbd.svg",
-          "isActive": false
+          "name": "Аргентина",
+          "logoUrl": "https://flagcdn.com/ar.svg",
+          "isActive": true
         },
         "matchDate": "2026-07-19T22:00:00+03:00",
         "score": "",
