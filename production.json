@@ -48,11 +48,11 @@
         "team2": {
           "name": "Аргентина",
           "logoUrl": "https://flagcdn.com/ar.svg",
-          "isActive": true
+          "isActive": false
         },
         "matchDate": "2026-07-19T22:00:00+03:00",
-        "score": "",
-        "isFinished": false,
+        "score": "1:0",
+        "isFinished": true,
         "feed_url": "https://feed.pm/api/v1/event/mfi-6a57f932835726.74671700"
       }
     ]
